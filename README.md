@@ -8,7 +8,11 @@
 - I had a go at translating to Java here: https://github.dev/TomSpencerLondon/SnackMachine
   - but next time would use BigDecimal instead of double.
 - This video is also quite good on domain driven design with REST  : https://www.youtube.com/watch?v=x3Bf25altb4
-
+  - According to Julien Topcu (I cloned the repo from his talk here: https://github.com/TomSpencerLondon/Columbiad-Express) the
+best form of rest is HATEOAS (Hypermedia as the Engine of Application State). This is where the client is given a link to
+the next state of the application. This is a good way of doing things because it means that the client does not need to work out the workflow but is presented
+with the next logical step as part of the response.
+    
 ### Domain Driven Design Example (Dmitri)
 Items aggregates should be saved and updated at the same time. This is to avoid duplication of data.
 A good example of domain driven design in action might be the following:
