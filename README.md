@@ -7,6 +7,7 @@
 - This is another course which is quite cool for practical domain driven design:https://www.pluralsight.com/courses/domain-driven-design-in-practice
 - I had a go at translating to Java here: https://github.dev/TomSpencerLondon/SnackMachine
   - but next time would use BigDecimal instead of double.
+- This video is also quite good on domain driven design: https://www.youtube.com/watch?v=x3Bf25altb4
 
 ### Domain Driven Design Example (Dmitri)
 Items aggregates should be saved and updated at the same time. This is to avoid duplication of data.
