@@ -1,7 +1,12 @@
 ### Domain Driven Design
 - Eric Evans - Domain Driven Design: Tackling Complexity in the Heart of Software
 - Pluralsight: https://www.pluralsight.com/courses/domain-driven-design-fundamentals?utm_source=google&utm_medium=paid-search&utm_campaign=upskilling-and-reskilling&utm_term=ssi-emea-uk-dynamic&utm_content=free-trial&gclid=Cj0KCQjw3a2iBhCFARIsAD4jQB06xLQuWUoyixx2mAPIXGn79riA4BOrDxZPkFgPcOCHiBUI3DftK9saAhP1EALw_wcB
-  - perhaps watch and then implement on own project rather than trying to code along 
+  - perhaps watch and then implement on own project rather than trying to code along
+    This course looks really good on domain driven design:
+    https://www.youtube.com/watch?v=aGwZVOsll6Q&list=PLQuwqoolg4aI6v1GvtRg3NgT0PBBHVqii
+- This is another course which is quite cool for practical domain driven design:https://www.pluralsight.com/courses/domain-driven-design-in-practice
+- I had a go at translating to Java here: https://github.dev/TomSpencerLondon/SnackMachine
+  - but next time would use BigDecimal instead of double.
 
 ### Domain Driven Design Example (Dmitri)
 Items aggregates should be saved and updated at the same time. This is to avoid duplication of data.
