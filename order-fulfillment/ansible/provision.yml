@@ -1,0 +1,91 @@
+---
+- hosts: all
+  become: true
+  vars:
+    hostname: "dev"
+    dbuser: "root"
+    dbpasswd: "password"
+    databases: []
+    sites: []
+    php_modules:
+      - php7.1-mysql
+      - php7.1-gd
+      - php-apcu
+      - php7.1-mcrypt
+      - php7.1-curl
+      - php7.1-intl
+      - php-memcached
+      - php7.1-mbstring
+      - php7.1-xml
+      - php7.1-pgsql
+    install_db: "no"
+    install_web: "no"
+    install_ohmyzsh: "no"
+    install_hhvm: "no"
+    install_mailcatcher: "no"
+    install_beanstalkd: "no"
+    install_redis: "no"
+    install_javascript_build_system: "no"
+    install_gems: []
+    install_r: "no"
+    php_configs: []
+    r_packages: []
+    install_postgresql: "no"
+    postgresql_version: "9.5"
+    postgresql_user: "root"
+    postgresql_passwd: "password"
+    postgresql_databases: []
+    install_java: "no"
+    enable_swap: "no"
+    swap_size_in_mb: 1024
+    install_typesafe_activator: "no"
+    typesafe_activator_version: "1.2.10"
+    install_eventstore: "no"
+    eventstore_version: "3.0.1"
+    eventstore_bind_ip: "10.10.10.10"
+    eventstore_http_prefix: "http://app.local:2113/"
+    install_laravel_tools: "no"
+  tasks:
+    - include: tasks/system.yml
+    - include: tasks/ohmyzsh.yml
+      when: install_ohmyzsh == "yes"
+    - include: tasks/mysql.yml
+      when: install_db == "yes"
+    - include: tasks/php.yml
+      when: install_web == "yes"
+    - include: tasks/php-fpm.yml
+      when: install_web == "yes"
+    - include: tasks/nginx.yml
+      when: install_web == "yes"
+    - include: tasks/hhvm.yml
+      when: install_hhvm == "yes"
+    - include: tasks/mailcatcher.yml
+      when: install_mailcatcher == "yes"
+    - include: tasks/beanstalkd.yml
+      when: install_beanstalkd == "yes"
+    - include: tasks/nodejs.yml
+      when: install_javascript_build_system == "yes"
+    - include: tasks/redis.yml
+      when: install_redis == "yes"
+    - include: tasks/ruby.yml
+    - include: tasks/r.yml
+      when: install_r == "yes"
+    - include: tasks/java.yml
+      when: install_java == "yes"
+    - include: tasks/swap.yml
+      when: enable_swap == "yes"
+    - include: tasks/laravel-tools.yml
+      when: install_laravel_tools == "yes"
+    - include: tasks/typesafe_activator.yml
+      when: install_typesafe_activator == "yes"
+    - include: tasks/eventstore.yml
+      when: install_eventstore == "yes"
+    - include: tasks/postgresql.yml
+      when: install_postgresql == "yes"
+  handlers:
+    - name: restart nginx
+      service: name=nginx state=restarted
+    - name: restart php7.1-fpm
+      service: name=php7.1-fpm state=restarted
+    - name: restart mysql
+      service: name=mysql state=restarted

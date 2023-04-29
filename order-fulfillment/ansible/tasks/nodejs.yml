@@ -1,0 +1,17 @@
+---
+# Node.js
+
+- name: Node.js | Install repository key
+  apt_key:
+    url: https://keyserver.ubuntu.com/pks/lookup?op=get&fingerprint=on&search=0x1655A0AB68576280
+    id: "68576280"
+    state: present
+
+- name: Node.js | Install Repository
+  apt_repository:
+    repo: "deb https://deb.nodesource.com/node_7.x xenial main"
+    state: present
+    update_cache: yes
+
+- name: Node.js | Install Node.js
+  apt: pkg=nodejs state=latest
